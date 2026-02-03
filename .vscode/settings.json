@@ -11,9 +11,9 @@
             "server": "postgresql://cse340cn:R2u2An3OvhXvPRs0JjwgLgPgbah0STl2@dpg-d5nd4r0gjchc7399kfr0-a.frankfurt-postgres.render.com/cse340cn_bt0p",
             "driver": "PostgreSQL",
             "name": "Render.com",
-            "connectString": "postgresql://cse340z:yaDrIEGbhazoSeGDLMJ9ANmFNeIXckql@dpg-d5qir6i4d50c738gabtg-a.frankfurt-postgres.render.com/cse340z_w123",
-            "database": "cse340z_rgvm",
-            "username": "cse340z"
+            "connectString": "postgresql://cse340cn:mGorRIBwebCDKkUv1fhN5BeUXsA2wjiF@dpg-d5v2qjcoud1c7387losg-a.frankfurt-postgres.render.com/cse340cn_7c8r",
+            "database": "cse340cn_7c8r",
+            "username": "cse340cn"
         }
     ]
 }
