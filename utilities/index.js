@@ -1,4 +1,5 @@
 const invModel = require("../models/inventory-model")
+const { body, validationResult } = require("express-validator")
 
 
 const Util = {}
@@ -235,7 +236,82 @@ Util.buildSingleVehicleDisplay = async (vehicle) => {
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 
+function classificationRules() {
+  return [
+    body("classification_name")
+      .trim()
+      .matches(/^[A-Za-z0-9]+$/)
+      .withMessage("Classification name must not contain spaces or special characters.")
+  ]
+}
+
+
+async function checkClassificationData(req, res, next) {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    req.flash("error", "Please correct the errors below.")
+    return res.render("inventory/add-classification", {
+      title: "Add Classification",
+      nav: await Util.getNav(),
+      errors: errors.array(),
+      messages: req.flash(),
+    })
+  }
+  next()
+}
+
+
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications()
+  let list = '<select name="classification_id" id="classification_id" required>'
+  list += '<option value="">Choose a Classification</option>'
+
+  data.rows.forEach(row => {
+    list += `<option value="${row.classification_id}"`
+
+    if (classification_id != null && row.classification_id == classification_id) {
+      list += " selected"
+    }
+
+    list += `>${row.classification_name}</option>`
+  })
+
+  list += "</select>"
+  return list
+}
 
 
 
-module.exports = Util
+// Validation rules for inventory form
+function inventoryRules() {
+  return [
+    body("inv_make").trim().notEmpty().withMessage("Make is required."),
+    body("inv_model").trim().notEmpty().withMessage("Model is required."),
+    body("inv_year").isInt({ min: 1900 }).withMessage("Valid year required."),
+    body("inv_price").isFloat({ min: 0 }).withMessage("Valid price required."),
+    body("inv_miles").isInt({ min: 0 }).withMessage("Valid miles required."),
+    body("inv_color").trim().notEmpty().withMessage("Color is required."),
+  ]
+}
+
+async function checkInventoryData(req, res, next) {
+  const errors = validationResult(req)
+
+  if (!errors.isEmpty()) {
+    const nav = await Util.getNav()
+    const classificationList = await Util.buildClassificationList(req.body.classification_id)
+
+    return res.render("inventory/add-inventory", {
+      title: "Add Inventory",
+      nav,
+      classificationList,
+      errors: errors.array(),
+      messages: req.flash()
+    })
+  }
+
+  next()
+}
+
+
+module.exports = { ...Util, classificationRules, checkClassificationData, inventoryRules, checkInventoryData,}

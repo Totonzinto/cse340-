@@ -1,0 +1,21 @@
+<section class="inventory-management">
+  <h1><%= title %></h1>
+
+  <% if (messages) { %>
+    <% Object.keys(messages).forEach(type => { %>
+      <div class="flash <%= type %>">
+        <%= messages[type][0] %>
+      </div>
+    <% }) %>
+  <% } %>
+
+  <div class="management-links">
+    <a href="/inv/add-classification" class="management-link">
+      ➕ Add New Classification
+    </a>
+
+    <a href="/inv/add-inventory" class="management-link">
+      ➕ Add New Inventory Item
+    </a>
+  </div>
+</section>

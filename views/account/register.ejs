@@ -1,0 +1,56 @@
+<section class="account-form">
+  <h1><%= title %></h1>
+
+ <% if (messages) { %>
+  <div class="flash-message">
+    <%- messages() %>
+  </div>
+<% } %>
+
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+
+  <form method="post" action="/account/register">
+    <!-- First Name -->
+    <label for="account_firstname">First name</label>
+    <input type="text" id="account_firstname" name="account_firstname" required value="<%= locals.account_firstname %>">
+
+    <!-- Last Name -->
+    <label for="account_lastname">Last name</label>
+    <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>">
+    <!-- Email -->
+    <label for="account_email">Email address</label>
+    <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>">
+
+    <!-- Password -->
+    <label for="account_password">Password</label>
+         
+    <div class="password-wrapper">
+      <input type="password" id="account_password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+
+      <button
+        type="button"
+        class="toggle-password"
+        aria-label="Show password"
+        onclick="togglePassword()"
+      >
+        👁
+      </button>
+    </div>
+
+    <p id="passwordHelp" class="password-rules">
+      Password must be at least 12 characters long and include
+      one capital letter, one number, and one special character.
+    </p>
+
+    <button type="submit">Register</button>
+  </form>
+
+ <script src="/js/account.js"></script>
+</section>

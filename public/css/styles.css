@@ -1,276 +1,983 @@
-/* Base Styles */
-* {
-  box-sizing: border-box; margin: 0;
-  padding: 0;
+/******* Change Box Model ***************/
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
+/******* Fonts ***********/
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Literata:opsz@7..72&display=swap");
 
+/* Colors */
+:root {
+  --primary-text: #242333;
+  --primary-background: #fff;
+  --body-font: Inter;
+  --heading-font: Literata;
+  --main-accent: #01b0d3;
+  --second-accent: #00499E;
+}
+
+/* General Styles */
+img {
+  max-width: 100%;
+}
+
+h1,
+h2, h3 {
+  font-size: 1.2em;
+  font-family: var(--heading-font), serif;
+}
+
+/* body */
 body {
-  background-image: url("/images/site/small_check.jpg");
-  background-size: cover;        
-  background-repeat: no-repeat;  
-  background-attachment: fixed;  
-  font-family: "Open Sans", Arial, sans-serif;
-  color: #222;
- 
+  /* font-family: 'Share Tech Mono', sans-serif; */
+  font-family: var(--body-font), sans-serif;
+  margin: 0;
 }
 
+#wrapper {
+  width: 95%;
+  background-color: var(--primary-background);
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 1em;
+}
 
-/* Header */
-header {
+@media only screen and (min-width: 768px) {
+
+  /* body */
+  body {
+    background-image: linear-gradient(45deg, #000 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #000 75%), linear-gradient(45deg,
+        transparent 75%,
+        #000 75%), linear-gradient(45deg, #000 25%, #fff 25%);
+    background-size: 100px 100px;
+    background-position: 0 0, 0 0, -50px -50px, 50px 50px;
+  }
+
+  #wrapper {
+    border: 5px solid var(--second-accent);
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding: 1vw;
+    width: 75vw;
+    max-width: 1200px;
+  }
+
+  h1 {
+    font-size: 1.9em;
+    grid-row: 1 / 1;
+    grid-column: 1 / 3;
+  }
+}
+
+/* header.ejs */
+#top-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #1b1b1b;
+}
+
+.siteName {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+#tools {
+  font-size: 3.5vw;
+  font-variant: small-caps;
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+}
+
+header>img {
+  max-width: 40%;
 }
 
 header a {
-  color: #fff;
   text-decoration: none;
+  color: var(--primary-text);
+  display: inline-block;
+  padding: 2vh 0;
+}
+
+@media only screen and (min-width: 768px) {
+
+  /* header.ejs */
+  #tools {
+    font-size: inherit;
+  }
+}
+
+/* navigation.ejs */
+nav {
+  background-color: var(--primary-text);
+  color: var(--primary-background);
+}
+
+nav ul {
+  display: flex;
+  padding: 0 1vw;
+  justify-content: space-around;
+}
+
+nav li {
+  list-style: none;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+nav a {
+  color: var(--primary-background);
+  text-decoration: none;
+  font-size: 0.85rem;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+
+  /* navigation.ejs */
+  nav {
+    margin-top: 0.75rem;
+  }
+
+  nav ul {
+    justify-content: space-evenly;
+    padding: 0.5rem 0;
+    margin: 0;
+  }
+
+  nav li {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+
+  nav a {
+    display: inline-block;
+    width: 4.5em;
+    padding: 0.25rem 0;
+    font-size: 1rem;
+  }
+
+  nav a:hover {
+    color: var(--primary-text);
+    background-color: var(--primary-background);
+  }
+}
+
+/* Footer.ejs */
+footer {
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+hr {
+  border: 2px solid var(--primary-text);
+  margin: 0;
+}
+
+/* index.ejs */
+#hero {
+  background-image: url("/images/vehicles/delorean.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+#hero h2 {
+  margin-left: 0;
+}
+
+#hero a:hover {
+  opacity: 0.5;
+}
+
+#hero li {
+  list-style: none;
+  color: var(--second-accent);
+}
+
+#hero li h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--second-accent);
+}
+
+#hero ul {
+  padding-left: 0;
+  margin-top: 0;
+  max-width: 200px;
+  margin-left: 0.5em;
+  margin-bottom: 2rem;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+#hero li {
+  font-size: 0.85em;
+}
+
+#actionbtn {
+  display: inline-block;
+  max-width: 25vw;
+  max-height: 10vh;
+  padding: 0.5rem;
+  background-color: var(--second-accent);
+  color: var(--primary-background);
+  font-weight: 800;
+  border-radius: 0.25rem;
+}
+
+#actionbtn:hover {
+  opacity: 0.8;
+}
+
+/* For Delorian list */
+section ul {
+  padding: 0 0 0 1rem;
+}
+
+#review li {
+  font-size: 0.9em;
+  margin-bottom: 1em;
+}
+
+.flex {
+  display: flex;
+  margin-bottom: 2em;
+  justify-content: center;
+  width: 100%;
+  padding-left: 0.25em;
+}
+
+.flex a {
+  width: 100%;
+}
+
+.add-col {
+  background-color: var(--second-accent);
+  height: 5.5em;
+  width: 95%;
+  border: var(--primary-text) solid 1px;
+}
+
+a figure {
+  margin: 0;
+}
+
+figure img {
+  display: block;
+  margin: auto;
+  padding-top: 0.5em;
+}
+
+figure figcaption {
+  text-align: center;
+}
+
+section {
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+@media only screen and (min-width: 768px) {
+
+  /* index.ejs */
+  #hero ul {
+    font-size: 1.6em;
+    margin-left: 2em;
+    margin-top: 1em;
+  }
+
+  #actionbtn {
+    display: block;
+    width: 90%;
+    margin-top: 1.5em;
+    padding: 1rem;
+    background-color: var(--second-accent);
+    color: var(--primary-background);
+    font-weight: 800;
+    font-size: large;
+  }
+
+  .flex-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+  }
+
+  #add-ons,
+  #review {
+    margin-top: 0;
+    flex: 1 0 45%;
+  }
+
+  #review h2,
+  #add-ons h2 {
+    font-size: 1.4em;
+    margin-bottom: 2em;
+  }
+
+  #add-ons {
+    order: -1;
+  }
+
+  #review li {
+    font-size: 1.1em;
+  }
+
+  #add-ons {
+    width: 45%;
+  }
+}
+
+/* --- Inventory Classification Display --- */
+#inv-display {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 312px));
+  gap: 20px;
+  list-style: none;
+}
+
+#inv-display li {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+#inv-display li:hover {
+  transform: translateY(-5px);
+}
+
+#inv-display li a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+#inv-display li img {
+  width: 70%;
+  height: 130px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+.namePrice {
+  padding: 15px;
+  text-align: left;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.namePrice h2 {
+  font-size: 1.2em;
+  margin-top: 0;
+  margin-bottom: 3px;
+  color: #333;
+}
+
+.namePrice span {
+  font-size: 1.1em;
   font-weight: bold;
+  color: #0055B8;
+  text-align: right;
+  margin-top: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  #inv-display {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 312px));
+    gap: 15px;
+  }
+
+  #inv-display li img {
+    height: 130px;
+    width: 70%;
+  }
+}
+
+@media (max-width: 480px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    text-align: center;
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  #inv-display li img {
+    height: 113px;
+    width: 210px;
+  }
+
+  .namePrice {
+    padding: 10px;
+  }
+
+  .namePrice h2 {
+    font-size: 1.1em;
+  }
+
+  .namePrice span {
+    font-size: 1em;
+  }
+}
+
+/* --- Styles for the vehicle detail view --- */
+.vehicle-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.vehicle-detail-image {
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+
+.vehicle-detail-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.vehicle-detail-data {
+  flex: 1 1 400px;
+  line-height: 1.6;
+}
+
+.vehicle-detail-data h2 {
+  font-size: 1.8rem;
+  color: #0055B8;
+}
+
+.vehicle-detail-data .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+  .vehicle-detail-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+#messages .notice {
+  color: #0055B8;
   font-size: 1.1rem;
 }
 
-header a:hover {
-  color: #f4c542;
+#messages .error {
+  color: #B30000;
+  font-size: 1.1rem;
 }
 
-/* Navigation */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  background-color: #003366;
-  flex-wrap: wrap;
-}
-
-nav ul li {
-  margin: 0.5rem 1rem;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-nav ul li:hover {
-  color: #f4c542;
-}
-
-/* Hero Section */
-.hero {
-  margin: 2rem auto;
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.hero h1 {
-  color: #003366;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.hero-text {
-  flex: 1;
-  text-align: left;
-}
-
-.hero-text h2 {
-  color: #1b1b1b;
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-}
-
-.hero-text ul {
-  list-style: disc;
-  margin-left: 1.25rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-img {
-  flex: 1;
+/* --- acccount and registration login page --- */
+/* Container for the login and registration form */
+/* Main Form Container Card */
+.login-container,
+.register-container {
   width: 100%;
-  max-width: 500px;
-  height: auto;
-  border-radius: 10px;
-}
-
-.btn-primary {
-  display: inline-block;
-  background-color: #0077cc;
-  color: #fff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.btn-primary:hover {
-  background-color: #005fa3;
-}
-
-/* Delorean Info Section  */
-.delorean-info {
-  max-width: 1200px;
-  margin: 2rem auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-/*  Upgrades  */
-.upgrades {
-  background-color: #f4c542;
+  max-width: 28rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   padding: 1.5rem;
-  border-radius: 10px;
-}
-
-.upgrades h3 {
-  text-align: center;
-  margin-bottom: 1rem;
-  color: #1b1b1b;
-}
-
-.upgrade-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1rem;
-  text-align: center;
-}
-
-.upgrade-items a {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background: white;
-  border-radius: 10px;
+  gap: 0.75rem;
+  margin: 1rem auto 0;
+  border: solid 2px #ccc;
+}
+
+/* Header Styles */
+.login-header,
+.register-header {
+  text-align: center;
+}
+
+.login-header h1,
+.register-header h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.login-header p,
+.register-header p {
+  color: #4b4f58;
+  margin-top: 0.25rem;
+}
+
+/* Form Element Styles */
+#loginForm,
+#registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Input Field Wrapper */
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels for Inputs */
+.input-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.25rem;
+}
+
+/* Text and Password Inputs */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:required:valid {
+  background-color: #f0fff0;
+  outline: none;
+}
+
+input:required:invalid {
+  background-color: #fff0f0;
+  outline: none;
+}
+
+input:required:valid:focus {
+  border-color: #218838;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.7);
+}
+
+input:required:invalid:focus {
+  border-color: #c82333;
+  box-shadow: 0 0 8px rgba(220, 53, 69, 0.7);
+}
+
+/* Flash Message Styling */
+.flash-message {
   padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  color: #333;
+}
+
+/* Password field container */
+.password-wrapper {
+  position: relative;
+}
+
+/* Password Toggle Button */
+#togglePassword {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+#togglePassword:hover {
+  color: #4b5563;
+}
+
+#togglePassword svg {
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Helper class to hide elements */
+.hidden {
+  display: none;
+}
+
+/* Password Requirements Text */
+.password-requirements {
+  font-size: 0.75rem;
+  color: #4b4f58;
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  background-color: #0055B8;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+  background-color: #1d4ed8;
+  transform: scale(1.02);
+}
+
+.submit-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6, 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Registration Link at the bottom */
+.register-link {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.register-link a {
+  font-weight: 500;
+  color: #0055B8;
   text-decoration: none;
-  color: #1b1b1b;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
 }
 
-.upgrade-items a:hover {
-  transform: scale(1.05);
+.register-link a:hover {
+  color: #3b82f6;
+  text-decoration: underline;
 }
 
-.upgrade-items img {
-  width: 80px;
-  height: 80px;
+/* Flash Message Placeholder */
+.flash-message {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #e7f3fe;
+  border-left: 6px solid #2196F3;
+  color: #333;
+  border-radius: 0.25rem;
+}
+
+/* Password Requirements Text */
+#passwordRules {
+  font-size: 0.75rem;
+  color: #545861;
+  list-style-position: inside;
+  padding-left: 0.5rem;
+}
+
+#passwordRules li {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+}
+
+/* --- NEW STYLES FOR MESSAGES --- */
+/* Container for all messages */
+#messages ul,
+.flash-message.notice {
+  padding: 0;
+  margin: 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  /* box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); */
+}
+
+/* Base style for any message */
+#messages ul li,
+.flash-message.notice li {
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  list-style: inside;
+  /* list-style-type: none; */
+}
+
+/* Style for "notice" messages (Success) */
+#messages .notice {
+  background-color: #FAFFFC;
+  color: #166534;
+  border: 1px solid #22c55e;
+  border-left: 5px solid #22c55e;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+#messages .notice li {
+  list-style-type: none;
+}
+
+/* Style for "error" messages */
+#messages .error,
+.flash-message.error,
+.flash-message.notice, .notice {
+  background-color: #FEF1F1;
+  color: #991b1b;
+  border: 1px solid #ef4444;
+  border-left: 5px solid #ef4444;
+  border-radius: 0.5rem;
+  padding: 0.2rem;
+}
+
+.notice {
+  padding: 1rem;
+}
+
+/* ===============================
+  Management View Styling
+================================*/
+.management-links {
+  margin-top: 2rem;
+}
+
+.management-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.management-links li {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.management-links a {
+  display: block;
+  padding: 0.8rem;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.management-links a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* ===============================
+  General Form Styling
+================================*/
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: #333;
+  width: 100%;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+form p {
+  font-size: 0.9rem;
+  color: #595959;
+  margin-top: -0.25rem;
   margin-bottom: 0.5rem;
 }
 
-.upgrade-items span {
+.form-button {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #186329;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+  background-color: #11461D;
+}
+
+/* ===============================
+  Inventory Management Table
+================================*/
+#inventoryDisplay {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#inventoryDisplay thead {
+  background-color: #333;
+  color: #fff;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+#inventoryDisplay th {
   font-weight: bold;
 }
 
-/* Reviews  */
-.reviews {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 1.5rem;
-  border-radius: 10px;
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
 
-.reviews h3 {
-  text-align: center;
-  color: #003366;
-  margin-bottom: 1rem;
+#inventoryDisplay tbody tr:hover {
+  background-color: #e2e2e2;
 }
 
-.reviews ul {
-  list-style-type: disc;
-  margin-left: 1.25rem;
-}
-
-/*  Footer  */
-footer {
-  background-color: #003366;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-}
-
-footer a {
-  color: #f0efec;
+#inventoryDisplay a {
+  color: #007bff;
   text-decoration: none;
+  font-weight: bold;
 }
 
-h1{
-  margin: 2rem auto;
-  max-width: 1200px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+#inventoryDisplay a:hover {
+  text-decoration: underline;
 }
 
-li{
-  background-color: #f5f3ee;
-  padding: 1.5rem;
-  border-radius: 10px;
-  
+.delete-button {
+  background-color: #dc3545;
 }
 
-h3{
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+
+/* --- Account Management Reviews Table --- */
+.management-view {
+  overflow-x: auto;
+}
+
+.management-view table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.management-view th {
+  background-color: #343a40;
+  color: #fff;
+  font-weight: 600;
   text-align: left;
-  margin-bottom: 1rem;
   padding: 1rem;
-  border-radius: 12px; 
+  white-space: nowrap;
 }
 
-#inv-display{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+.management-view td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #dee2e6;
+  color: #212529;
 }
 
- /* Larger screens  */
-@media screen and (min-width: 768px) {
-  .hero-content {
-    flex-direction: row; 
-    align-items:flex-end;
-    justify-content: space-between;
-  }
+.management-view tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.02);
+}
 
-  .hero-text {
-    flex: 1;
-    max-width: 45%;
-    text-align: left;
-  }
+.management-view tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
 
-  .hero-img {
-    flex: 1;
-    max-width: 45%;
-  }
+/* Action Links in Table */
+.management-view td a {
+  display: inline-block;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
 
-  .delorean-info {
-    flex-direction: row;
-  }
+.management-view td a[title="Edit Review"] {
+  color: #007bff;
+}
 
-  .upgrades,
-  .reviews {
-    flex: 1;
-  }
+.management-view td a[title="Delete Review"] {
+  color: #dc3545;
+}
 
-  .upgrade-items {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  #inv-display{
-    flex-direction: row;
+.management-view td a:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 768px) {
+  
+
+  .management-view th,
+  .management-view td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
 }
