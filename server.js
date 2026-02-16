@@ -16,7 +16,9 @@ const utilities = require('./utilities/index')
 const session = require("express-session")
 const pool = require("./database/")
 const accountController = require('./controllers/accountController');
+const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 
@@ -51,6 +53,10 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
+
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
 
 
 /* ***********************

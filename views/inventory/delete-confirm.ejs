@@ -1,0 +1,26 @@
+<section class="add-inventory">
+  <h1><%= title %></h1>
+
+  <%- messages() %>
+
+  <p class="warning-text">Confirm Deletion - The delete is permanent.</p>
+
+  <form action="/inv/delete" method="post">
+    
+    <label for="invMake">Make</label>
+    <input type="text" name="inv_make" id="invMake" readonly value="<%= inv_make %>">
+
+    <label for="invModel">Model</label>
+    <input type="text" name="inv_model" id="invModel" readonly value="<%= inv_model %>">
+
+    <label for="invYear">Year</label>
+    <input type="number" name="inv_year" id="invYear" readonly value="<%= inv_year %>">
+
+    <label for="invPrice">Price</label>
+    <input type="number" name="inv_price" id="invPrice" readonly value="<%= inv_price %>">
+
+    <button type="submit">Delete Vehicle</button>
+    
+    <input type="hidden" name="inv_id" value="<%= inv_id %>">
+  </form>
+</section>

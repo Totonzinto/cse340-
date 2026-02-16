@@ -13,9 +13,23 @@
     <a href="/inv/add-classification" class="management-link">
       ➕ Add New Classification
     </a>
+    <h2>Manage Inventory</h2>
+    <p>select a classification from the list to see the items belonging to the classification</p>
+
+    <% if (classificationSelect) { %>
+  <div class="management-list">
+    <%- classificationSelect %>
+  </div>
+<% } %>
+
+
+<table id="inventoryDisplay"></table>
+<noscript>JavaScript must be enabled to use this page.</noscript>
 
     <a href="/inv/add-inventory" class="management-link">
       ➕ Add New Inventory Item
     </a>
   </div>
 </section>
+
+<script src="/js/inventory.js"></script>

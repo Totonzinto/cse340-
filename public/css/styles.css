@@ -859,6 +859,92 @@ form p {
   background-color: #11461D;
 }
 
+
+/* Container styling */
+.account-update-container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0 1rem;
+}
+
+.form-wrapper {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+/* Form Layout */
+.account-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Label & Input Styling */
+.account-form label {
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.account-form input[type="text"],
+.account-form input[type="email"],
+.account-form input[type="password"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  /* Ensures inputs don't zoom in on mobile Safari */
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+/* Focus states for accessibility */
+.account-form input:focus {
+  outline: 2px solid #0056b3;
+  border-color: transparent;
+}
+
+/* Validation Feedback (Best Practice) */
+.account-form input:required:focus:invalid {
+  border-color: #a00;
+}
+
+/* Password instruction text */
+.instruction {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+/* Submit Button Styling */
+.account-form input[type="submit"] {
+  margin-top: 1.5rem;
+  padding: 12px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.account-form input[type="submit"]:hover {
+  background-color: #444;
+}
+
+/* Separation line */
+hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 2px solid #eee;
+}
+
+
 /* ===============================
   Inventory Management Table
 ================================*/
