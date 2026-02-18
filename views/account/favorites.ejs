@@ -1,0 +1,20 @@
+<section class="favorites-container">
+  <h1><%= title %></h1>
+  
+  <%- messages() %>
+
+  <% if (data && data.length > 0) { %>
+    <ul class="favorites-list">
+      <% data.forEach(vehicle => { %>
+        <li>
+          <img src="<%= vehicle.inv_thumbnail %>" alt="<%= vehicle.inv_make %>">
+          <a href="/inv/detail/<%= vehicle.inv_id %>">
+            <%= vehicle.inv_make %> <%= vehicle.inv_model %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  <% } else { %>
+    <p>You haven't saved any vehicles yet. Browse our inventory to find your next ride!</p>
+  <% } %>
+</section>

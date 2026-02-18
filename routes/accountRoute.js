@@ -8,6 +8,7 @@ const router = new express.Router()
 const accountController = require("../controllers/accountController")
 const utilities = require("../utilities")
 const regValidate = require('../utilities/account-validation')
+const favCont = require("../controllers/favController")
 
 /* ******************************************
  * Deliver Login View
@@ -71,6 +72,12 @@ router.post(
 
 // Route to handle logout
 router.get("/logout", utilities.handleErrors(accountController.logout))
+
+// Build favorites view
+router.get("/favorites", utilities.checkLogin, utilities.handleErrors(favCont.buildFavoritesView))
+
+// Process adding a favorite
+router.post("/favorites", utilities.checkLogin, utilities.handleErrors(favCont.addFavorite))
 
 
 module.exports = router

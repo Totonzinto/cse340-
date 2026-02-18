@@ -14,3 +14,13 @@
 <p class="notice">Sorry, no matching vehicle could be found.</p>
 <% } %>
 
+<% if (locals.loggedin) { %>
+  <% if (isFavorite) { %>
+    <p class="fav-status">⭐ This vehicle is in your favorites!</p>
+  <% } else { %>
+    <form action="/account/favorites" method="post">
+      <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+      <button type="submit" class="btn-fav">❤ Add to Favorites</button>
+    </form>
+  <% } %>
+<% } %>

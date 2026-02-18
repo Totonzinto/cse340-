@@ -1,6 +1,7 @@
 const e = require("connect-flash")
 const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
+const favModel = require("../models/favorite-model")
 
 const invCont = {}
 
@@ -46,6 +47,9 @@ invCont.buildDetail = async function (req, res, next) {
     nav,
     message: null,
     htmlData,
+    vehicle: vehicle,
+    isFavorite: await favModel.checkFavoriteExists(res.locals.accountData.account_id, invId)
+    
   })
 }
 
